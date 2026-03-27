@@ -61,4 +61,55 @@ function problem2WithTwoPointer() {
   else console.log("No, palindrome");
 }
 
-problem2WithTwoPointer();
+function problem3() {
+  // count frequencies of each letter in a string
+  const str = "banana";
+  const map = new Map<string, number>();
+  for (let i of str) {
+    const count = map.get(i) ?? 0;
+    map.set(i, count + 1);
+  }
+
+  let maxFreq = 0,
+    target = "";
+
+  for (let i of map.entries()) {
+    if (maxFreq < i[1]) {
+      maxFreq = i[1];
+      target = i[0];
+    }
+  }
+  console.log(target, maxFreq);
+}
+
+function problem4() {
+  // check if 2 strings are anagrams
+  const str1 = "car",
+    str2 = "arc";
+
+  if (str1.length !== str2.length) {
+    console.log("Not anagrams");
+    return;
+  }
+
+  const map1 = new Map<string, number>();
+  const map2 = new Map<string, number>();
+
+  for (let i of str1) {
+    const count = map1.get(i) ?? 0;
+    map1.set(i, count + 1);
+  }
+  for (let i of str2) {
+    const count = map2.get(i) ?? 0;
+    map2.set(i, count + 1);
+  }
+
+  for (let i of map1.entries()) {
+    if (i[1] !== map2.get(i[0])) {
+      console.log("No, anagrams");
+      return;
+    }
+  }
+  console.log("Yes, anagrams");
+}
+problem4();
