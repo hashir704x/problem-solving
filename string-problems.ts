@@ -43,7 +43,7 @@ function problem2() {
 }
 
 function problem2WithTwoPointer() {
-  // reverse a string
+  // check for palindrome
   const str = "racecar";
   let i = 0,
     j = str.length - 1,
@@ -139,7 +139,6 @@ function problem5() {
   }
   console.log("No, not a substring");
 }
-// problem5();
 
 function problem6() {
   // rotate strings
@@ -170,3 +169,51 @@ function problem7() {
   }
 }
 problem7();
+
+function problem8() {
+  // check for all pairs of anagrams in array
+  function checkAnagram(str1: string, str2: string) {
+    if (str1.length !== str2.length) return false;
+    const map1 = new Map<string, number>();
+    const map2 = new Map<string, number>();
+
+    for (let i of str1) {
+      const count = map1.get(i) || 0;
+      map1.set(i, count + 1);
+    }
+    for (let i of str2) {
+      const count = map2.get(i) || 0;
+      map2.set(i, count + 1);
+    }
+
+    for (let x of map1.entries()) {
+      if (!map2.get(x[0])) {
+        return false;
+      } else if (map1.get(x[0]) !== map2.get(x[0])) {
+        return false;
+      }
+    }
+    return true;
+  }
+
+  const arr = ["cat", "tzc", "tac", "dog"];
+  const solArray: string[] = [];
+  let i = 0;
+  while (i < arr.length - 1) {
+    let j = i + 1;
+    while (j < arr.length) {
+      if (checkAnagram(arr[i], arr[j])) {
+        if (!solArray.includes(arr[i])) {
+          solArray.push(arr[i]);
+        }
+        if (!solArray.includes(arr[j])) {
+          solArray.push(arr[j]);
+        }
+      }
+      j++;
+    }
+    i++;
+  }
+  console.log(solArray);
+}
+problem8();
