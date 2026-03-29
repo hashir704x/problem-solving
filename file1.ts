@@ -113,27 +113,30 @@ function problem4() {
 }
 
 function problem5() {
-  // check if one string is substring of another
-  const str1 = "wowolf";
-  const str2 = "wolf";
+  // check one string is substring of other
+  const substring = "red";
+  const str = "blueredcar";
   let i = 0,
-    j = 0,
-    count = 0;
-  while (i < str1.length) {
-    if (str2[j] !== str1[i]) {
-      count = 0;
-      j = 0;
-    } else if (str2[j] === str1[i]) {
-      count++;
-      j++;
-      if (count === str2.length) {
-        console.log("Yes, it is a substring");
-        return;
+    j = 0;
+  while (i < str.length) {
+    j = 0;
+    if (substring[j] === str[i]) {
+      let k = i;
+      while (j < substring.length) {
+        if (substring[j] === str[k]) {
+          k++;
+          j++;
+        } else {
+          break;
+        }
+        if (j === substring.length) {
+          console.log("Yes, substring");
+          return;
+        }
       }
     }
     i++;
   }
   console.log("No, not a substring");
 }
-
 problem5();
