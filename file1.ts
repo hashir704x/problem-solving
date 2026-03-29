@@ -139,4 +139,34 @@ function problem5() {
   }
   console.log("No, not a substring");
 }
-problem5();
+// problem5();
+
+function problem6() {
+  // rotate strings
+  const num = 3;
+  let string = "hashir";
+  const addedString = string.slice(0, num);
+  string = string.concat(addedString);
+  const ans = string.slice(num, string.length);
+  console.log(ans);
+}
+
+function problem7() {
+  // count frequency of each word in a sentence
+  const sentence = "Kamran is a good boy. boy who is a good boy";
+  const array = sentence.split(" ");
+  const map = new Map<string, number>();
+  for (let word of array) {
+    const lastLetter = word[word.length - 1];
+    const extras = [",", ".", "?"];
+    if (extras.includes(lastLetter)) {
+      word = word.slice(0, -1);
+    }
+    const count = map.get(word) ?? 0;
+    map.set(word, count + 1);
+  }
+  for (let item of map.entries()) {
+    console.log("word:", item[0], "\tfrequency:", item[1]);
+  }
+}
+problem7();
