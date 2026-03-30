@@ -168,7 +168,6 @@ function problem7() {
     console.log("word:", item[0], "\tfrequency:", item[1]);
   }
 }
-problem7();
 
 function problem8() {
   // check for all pairs of anagrams in array
@@ -216,4 +215,3 @@ function problem8() {
   }
   console.log(solArray);
 }
-problem8();
