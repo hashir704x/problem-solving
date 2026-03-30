@@ -28,17 +28,33 @@ function problem2() {
   }
   console.log("Yes, sorted in ascending");
 }
-problem2();
+
 
 function problem3() {
   // rotate array by k number
   let arr = [1, 2, 3, 4, 5];
-  const k = 3;
-  const addedArray = arr.slice(arr.length - k, arr.length);
+  const k = 6;
+  const toRotate = k % arr.length;
+  const addedArray = arr.slice(arr.length - toRotate, arr.length);
   arr = addedArray.concat(arr);
-  for (let i = 1; i <= k; i++) {
+  for (let i = 1; i <= toRotate; i++) {
     arr.pop();
   }
+  console.log(toRotate);
   console.log(arr);
 }
-problem3();
+
+
+function problem4() {
+  // give unique pairs whose sum is equal to target
+  const arr = [0, 1, 2, 3, 4, 5, 6, 7];
+  const target = 6;
+  for (let i = 0; i < arr.length; i++) {
+    for (let j = i + 1; j < arr.length; j++) {
+      if (arr[i] + arr[j] === target) {
+        console.log("(", arr[i], arr[j], ")");
+      }
+    }
+  }
+}
+
