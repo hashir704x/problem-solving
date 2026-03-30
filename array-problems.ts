@@ -29,7 +29,6 @@ function problem2() {
   console.log("Yes, sorted in ascending");
 }
 
-
 function problem3() {
   // rotate array by k number
   let arr = [1, 2, 3, 4, 5];
@@ -44,7 +43,6 @@ function problem3() {
   console.log(arr);
 }
 
-
 function problem4() {
   // give unique pairs whose sum is equal to target
   const arr = [0, 1, 2, 3, 4, 5, 6, 7];
@@ -58,3 +56,39 @@ function problem4() {
   }
 }
 
+function problem5() {
+  // find the missing element in array from 1 to N
+  const arr = [5, 2, 1, 3, 7];
+  let highestElement = arr[0];
+  let i = 0;
+  while (i < arr.length) {
+    if (highestElement < arr[i]) highestElement = arr[i];
+    i++;
+  }
+  i = 1;
+  while (i <= highestElement) {
+    if (!arr.includes(i)) {
+      console.log(i);
+    }
+    i++;
+  }
+}
+
+function problem6() {
+  // shift zeroes to end
+  let countOfZeroes = 0;
+  const arr = [1, 0, 3, 12, 0, 0, 7];
+  let i = 0;
+  while (i < arr.length) {
+    while (arr[i] === 0) {
+      countOfZeroes++;
+      arr.splice(i, 1);
+    }
+    i++;
+  }
+
+  for (let x = 0; x < countOfZeroes; x++) {
+    arr.push(0);
+  }
+  console.log(arr);
+}
